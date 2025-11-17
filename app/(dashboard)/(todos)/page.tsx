@@ -1,10 +1,9 @@
-import React from 'react'
+import TodosPage from '@/components/page-content/todos'
 
 const Todos = () => {
   return (
     <section>
-      <p>fds</p>
-      
+      <TodosPage />
     </section>
   )
 }
