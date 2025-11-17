@@ -7,13 +7,13 @@ export const LoginSchema = z.object({
 
 export const signupSchema = z
   .object({
-    firstName: z
+    first_name: z
       .string()
       .min(2, "First name must be at least 2 characters")
       .max(30, "First name is too long")
       .regex(/^[A-Za-z]+(?: [A-Za-z]+)*$/, "Please enter a valid name format."),
 
-    lastName: z
+    last_name: z
       .string()
       .min(2, "Last name must be at least 2 characters")
       .max(30, "Last name is too long")
@@ -33,12 +33,11 @@ export const signupSchema = z
     path: ["confirmPassword"],
   });
 
-
 export const profileSchema = z.object({
-  firstname: z.string().optional(),
-  lastname: z.string().optional(),
+  first_name: z.string().optional(),
+  last_name: z.string().optional(),
   email: z.string().email("Invalid email").optional(),
   address: z.string().optional(),
-  contact: z.string().optional(),
+  contact_number: z.string().optional(),
   birthday: z.string().optional(),
 });

@@ -1,10 +1,16 @@
+"use client"
+
+import { handleLogout } from '@/lib/auth'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { FaRegCalendarCheck, FaUser } from 'react-icons/fa'
 import { MdHome, MdLogout } from 'react-icons/md'
 
 const Sidebar = () => {
+  const router = useRouter();
+
   const mainMenuItem = [
     {
       name: "Dashboard",
@@ -22,6 +28,11 @@ const Sidebar = () => {
       link: "/profile"
     },
   ]
+
+  const logout = () => {
+    handleLogout();
+    router.replace("/login");
+  }
 
   return (
     <>
@@ -58,12 +69,12 @@ const Sidebar = () => {
       </div>
       <div className="px-10 py-8">
         <p>
-          <Link
-            href="/logout"
-            className="inline-flex items-center gap-x-3 text-grey hover:text-white font-medium transition"
+          <span
+            className="inline-flex items-center gap-x-3 text-grey hover:text-white font-medium transition cursor-pointer"
+            onClick={logout}
           >
             <MdLogout className="text-2xl" /> Logout
-          </Link>
+          </span>
         </p>
       </div>
     </>

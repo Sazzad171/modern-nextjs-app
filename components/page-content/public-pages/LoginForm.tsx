@@ -3,20 +3,30 @@
 import { CustomButton } from "@/components/ui/button/CustomButton";
 import Checkbox from "@/components/ui/form/Checkbox";
 import InputField from "@/components/ui/form/InputField";
+import { handleLogin } from "@/lib/auth";
 import { LoginSchema } from "@/lib/zodSchema";
 import { LoginType } from "@/types/interface";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
-
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
+  const router = useRouter();
+
   const methods = useForm<LoginType>({
     resolver: zodResolver(LoginSchema),
   });
 
-  const onSubmit = (data: LoginType) => {
-    console.log("Submitted Data:", data);
+  const onSubmit = async (data: LoginType) => {
+    try {
+      await handleLogin(data);
+      toast.success("Logged in successfully!");
+      router.replace("/");
+    } catch (err) {
+      toast.error("Logged in failed!");
+    }
   };
 
   return (

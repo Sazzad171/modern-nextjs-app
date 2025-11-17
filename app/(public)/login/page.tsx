@@ -12,7 +12,7 @@ const LoginPage = () => {
       </div>
       <p className="text-center text-grey-2">
         Don’t have an account?
-        <Link href={"/login"} className="text-primary"> Register now</Link>
+        <Link href={"/signup"} className="text-primary"> Register now</Link>
       </p>
     </div>
   )

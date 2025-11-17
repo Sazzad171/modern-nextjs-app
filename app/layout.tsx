@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import ToastProvider from "@/components/ui/toast/ToastProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable}`}>
         {children}
+        <ToastProvider />
       </body>
     </html>
   );
