@@ -12,16 +12,18 @@ export const CustomButton: React.FC<ButtonProps> = ({
   icon,
   className = "",
   disabled,
+  type,
   ...rest
 }) => {
 
   return (
     <button
-      className={`${className} bg-primary text-white rounded-lg text-center text-sm font-medium px-4 py-3 min-w-[200px] ${fullWidth && "w-full"}`}
+      className={`${className} bg-primary text-white rounded-lg text-center text-sm font-medium px-4 py-3 min-w-[200px] ${fullWidth && "w-full"} disabled:bg-[#8CA3CD]`}
       disabled={disabled}
+      type={type}
       {...rest}
     >
-      {icon && <span className="mr-2">{icon}</span>}
+      {icon && <span>{icon}</span>}
       {children}
     </button>
   );
