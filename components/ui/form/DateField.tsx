@@ -15,7 +15,7 @@ export default function DateField({ name, label, placeholder }: DateFieldProps) 
   const value = watch(name);
 
   return (
-    <div className="flex flex-col space-y-1">
+    <div className="flex flex-col space-y-1 mb-4">
       {label && <label className="block mb-[6px] text-sm font-medium text-black">{label}</label>}
 
       <div className="relative w-full">

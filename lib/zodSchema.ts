@@ -41,3 +41,33 @@ export const profileSchema = z.object({
   contact_number: z.string().optional(),
   birthday: z.string().optional(),
 });
+
+export const todoSchema = z.object({
+  title: z
+    .string()
+    .min(1, { message: "Title is required" })
+    .max(200, { message: "Title is too long" }),
+
+  description: z
+    .string()
+    .min(1, { message: "Description is required" })
+    .max(2000, { message: "Description is too long" }),
+
+  priority: z.enum(["low", "moderate", "extreme"], {
+    message: "Priority must be low, moderate, or extreme",
+  }),
+  todo_date: z
+    .string()
+    .refine((val) => {
+      const parsed = new Date(val);
+      if (Number.isNaN(parsed.getTime())) return false;
+
+      const given = new Date(parsed);
+      given.setHours(0, 0, 0, 0);
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      return given.getTime() >= today.getTime();
+    }, { message: "todo_date must be today or a future date (not in the past)" }),
+});

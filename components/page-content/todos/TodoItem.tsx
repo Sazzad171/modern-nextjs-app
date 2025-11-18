@@ -1,20 +1,24 @@
-import React from 'react'
+import { TodoResponse } from '@/types/interface'
 import { FiTrash } from 'react-icons/fi'
 import { LuPencilLine } from 'react-icons/lu'
 
-const TodoItem = () => {
+interface TodoItemDataProps {
+  todoItemData: TodoResponse
+}
+
+const TodoItem = ({todoItemData}: TodoItemDataProps) => {
   return (
     <div className="bg-white p-6 rounded-lg border border-[#FEE2E2] shadow-[0_1px_2px_0_rgba(0,0,0,0.05)] mb-4">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h6 className="text-bgDark text-lg font-medium">fds dsfa fsda</h6>
+          <h6 className="text-bgDark text-lg font-medium">{todoItemData?.title}</h6>
         </div>
         <div>
-          <span className="text-sm px-2 py-4 rounded">Extreme</span>
+          <span className="text-sm px-2 py-4 rounded">{todoItemData?.priority}</span>
         </div>
       </div>
       <p className="text-sm text-grey-2 mb-5">
-        Upgrading backend infrastructure for better
+        {todoItemData?.description}
       </p>
       <div className="flex items-center justify-between">
         <div>

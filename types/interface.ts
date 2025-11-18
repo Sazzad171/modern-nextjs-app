@@ -1,4 +1,4 @@
-import { LoginSchema, profileSchema, signupSchema } from "@/lib/zodSchema";
+import { LoginSchema, profileSchema, signupSchema, todoSchema } from "@/lib/zodSchema";
 import z from "zod";
 
 export type LoginType = z.infer<typeof LoginSchema>;
@@ -38,12 +38,7 @@ export interface ProfileResponse {
   bio?: string;
 }
 
-export interface TodoPayload {
-  title: string;
-  description: string;
-  priority: "low" | "moderate" | "extreme";
-  todo_date: string;
-}
+export type TodoPayload = z.infer<typeof todoSchema>;
 
 export interface TodoResponse {
   id: number;
