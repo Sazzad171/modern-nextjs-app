@@ -18,6 +18,7 @@ const TopBar = () => {
               width={105}
               height={32}
               className="object-cover"
+              unoptimized
             />
           </div>
           <div className='flex items-center gap-x-5'>

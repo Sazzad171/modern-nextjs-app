@@ -44,6 +44,7 @@ const Sidebar = () => {
             width={86}
             height={86}
             className="object-cover rounded-full mx-auto"
+            unoptimized
           />
           <h6 className="font-semibold text-white mt-3 mb-[2px]">amanuel</h6>
           <p className="text-xs text-white">amanuel@gmail.com</p>

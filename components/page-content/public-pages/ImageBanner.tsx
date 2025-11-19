@@ -19,6 +19,7 @@ const ImageBanner = () => {
       width={606}
       height={400}
       className="object-cover"
+      unoptimized
     />
   )
 }

@@ -10,6 +10,7 @@ const NoTodos = () => {
         width={240}
         height={216}
         className="object-cover mx-auto"
+        unoptimized
       />
       <h6 className="text-center text-2xl text-[#201F1E]">No todos yet</h6>
     </div>

@@ -30,6 +30,7 @@ const ProfileForm = () => {
             width={86}
             height={86}
             className="object-cover rounded-full"
+            unoptimized
           />
           <span className="absolute right-1 bottom-0 bg-primary w-8 h-8 p-2 rounded-full">
             <IoMdCamera className="text-white" />
