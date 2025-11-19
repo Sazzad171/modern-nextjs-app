@@ -50,13 +50,13 @@ const ProfileForm = () => {
             <div className="flex flex-wrap mb-12">
               <div className="w-full md:w-1/2 px-2">
                 <InputField
-                  name="firstName"
+                  name="first_name"
                   label="First Name"
                 />
               </div>
               <div className="w-full md:w-1/2 px-2">
                 <InputField
-                  name="lastName"
+                  name="last_name"
                   label="Last Name"
                 />
               </div>
@@ -75,7 +75,7 @@ const ProfileForm = () => {
               </div>
               <div className="w-full md:w-1/2 px-2">
                 <InputField
-                  name="contact"
+                  name="contact_number"
                   label="Contact"
                 />
               </div>

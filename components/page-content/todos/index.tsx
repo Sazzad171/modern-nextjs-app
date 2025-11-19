@@ -5,7 +5,7 @@ import AllTodos from "./AllTodos";
 import NoTodos from "./NoTodos";
 import { getTodos } from "@/api/api";
 import toast from "react-hot-toast";
-import { TodoResponse } from "@/types/interface";
+import { TodoEditPayload, TodoPayload, TodoResponse } from "@/types/interface";
 import { CustomButton } from "@/components/ui/button/CustomButton";
 import { FaPlus } from "react-icons/fa";
 import Modal from "@/components/ui/modal";
@@ -13,21 +13,39 @@ import AddEditModal from "./AddEditModal";
 
 const TodosPage = () => {
   const [todoList, setTodoList] = useState<TodoResponse[]>([]);
+  const [loadingTodoList, setLoadingTodoList] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [editTodoData, setEditTodoData] = useState<TodoEditPayload | null>(null);
 
   // get full todo list
   const getTodoList = async () => {
+    setLoadingTodoList(true);
+
     try {
       const response = await getTodos();
       setTodoList(response?.data?.results);
+      setLoadingTodoList(false);
     } catch (err) {
       toast.error("Todo fetch failed!");
+      setLoadingTodoList(false);
     }
   }
 
   useEffect(() => {
     getTodoList();
   }, []);
+
+  // handle edit
+  const handleEdit = (todo: TodoEditPayload) => {
+    setEditTodoData(todo);
+    setOpenModal(true);
+  };
+
+  // onClose modal handle
+  const handleCloseModal = () => {
+    setEditTodoData(null);
+    setOpenModal(false);
+  }
 
   return (
     <div className="w-full p-5">
@@ -52,21 +70,25 @@ const TodosPage = () => {
 
       <div className="flex">
         <div>
-
         </div>
         <div>
-
         </div>
       </div>
 
-      {todoList?.length > 0 ?
-        <AllTodos todoList={todoList} />
-        : <NoTodos />
+      {loadingTodoList ?
+        <></> :
+          todoList?.length > 0 ?
+            <AllTodos todoList={todoList} handleEdit={handleEdit} getTodoList={getTodoList} />
+            : <NoTodos />
       }
 
       {/* add/edit modal */}
-      <Modal open={openModal} onClose={() => setOpenModal(false)}>
-        <AddEditModal setOpen={setOpenModal} />
+      <Modal open={openModal} onClose={handleCloseModal}>
+        <AddEditModal
+          setOpen={setOpenModal} 
+          getTodoList={getTodoList}
+          editTodoData={editTodoData}
+        />
       </Modal>
     </div>
   )

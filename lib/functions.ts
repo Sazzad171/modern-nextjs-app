@@ -4,3 +4,15 @@ export function getDayAndDate(date: Date) {
     date: date.toLocaleDateString("en-GB"),
   };
 }
+
+export function getFormattedDate(date: string) {
+  const formattedDate = new Date(date);
+
+  const formatted = formattedDate.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  return formatted;
+}

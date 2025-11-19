@@ -58,6 +58,7 @@ export const todoSchema = z.object({
   }),
   todo_date: z
     .string()
+    .min(1, "Date is required")
     .refine((val) => {
       const parsed = new Date(val);
       if (Number.isNaN(parsed.getTime())) return false;
@@ -69,5 +70,7 @@ export const todoSchema = z.object({
       today.setHours(0, 0, 0, 0);
 
       return given.getTime() >= today.getTime();
-    }, { message: "todo_date must be today or a future date (not in the past)" }),
+    }, {
+      message: "todo_date must be today or a future date (not in the past)"
+    }),
 });

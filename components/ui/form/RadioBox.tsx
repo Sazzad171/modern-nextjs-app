@@ -16,15 +16,15 @@ export default function SingleSelectCheckbox({
   const selectedValue = watch(name);
 
   return (
-    <label className="inline-flex items-center gap-2 cursor-pointer select-none mb-3">
+    <label className="inline-flex items-center gap-2 cursor-pointer select-none">
+      <span className="text-[#374151] text-sm">{label}</span>
+
       <input
         type="checkbox"
         checked={selectedValue === value}
         onChange={() => setValue(name, value)}
         className="h-4 w-4 rounded border-black"
       />
-
-      <span className="text-[#374151] text-sm">{label}</span>
 
       <input type="hidden" {...register(name)} />
     </label>

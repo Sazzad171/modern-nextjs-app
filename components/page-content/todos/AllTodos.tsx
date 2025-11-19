@@ -1,19 +1,21 @@
 import React from 'react'
 import TodoItem from './TodoItem'
-import { TodoResponse } from '@/types/interface'
+import { TodoEditPayload, TodoResponse } from '@/types/interface'
 
 interface AllTodoProps {
-  todoList: TodoResponse[]
+  todoList: TodoResponse[];
+  handleEdit: (todo: TodoEditPayload) => void,
+  getTodoList: () => void
 }
 
-const AllTodos = ({todoList}: AllTodoProps) => {
+const AllTodos = ({todoList, handleEdit, getTodoList}: AllTodoProps) => {
   return (
     <div>
       <h5 className="text-black text-lg font-semibold mb-4">Your Tasks</h5>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap -mx-2">
         {todoList?.map((todoItem, index) => (
-          <div className="w-full md:w-6/12 lg:w-4/12" key={index}>
-            <TodoItem todoItemData={todoItem} />
+          <div className="w-full md:w-6/12 lg:w-4/12 px-2" key={index}>
+            <TodoItem todoItemData={todoItem} handleEdit={handleEdit} getTodoList={getTodoList} />
           </div>
         ))}
       </div>

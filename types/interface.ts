@@ -40,6 +40,10 @@ export interface ProfileResponse {
 
 export type TodoPayload = z.infer<typeof todoSchema>;
 
+export interface TodoEditPayload extends TodoPayload {
+  id: number;
+}
+
 export interface TodoResponse {
   id: number;
   title: string;
