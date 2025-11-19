@@ -14,7 +14,7 @@ const ImageBanner = () => {
 
   return (
     <Image
-      src={pathname === "/login" ? posterPath.login : posterPath.signup}
+      src={pathname === "/login" ? "/images/login-poster.png" : "/images/signup-poster.png"}
       alt="Poster"
       width={606}
       height={400}
